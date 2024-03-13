@@ -57,5 +57,16 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: '5a8a02d9-243d-4ec3-9bf1-be901cab1a65', toolName: 'docker') {
+                        
+                        sh "docker run -d --name shop-shop -p 8070:8070 airej/shopping-cart:latest"
+                    }
+                }
+            }
+        }
     }
 }
