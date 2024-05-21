@@ -105,35 +105,8 @@ pipeline {
         }
         
         stage('Sonarqube') {
-            parallel {
-                stage('Demo 1') {
-                    steps {
-                        sh "echo 'Hello from Demo 1'"
-                    }
-                }
-                stage('Demo 2') {
-                    steps {
-                        sh "echo 'Hello from Demo 2'"
-                    }
-                }
-                stage('Demo 3') {
-                    steps {
-                        sh "echo 'Hello from Demo 3'"
-                    }
-                }
-                stage('Demo 4') {
-                    steps {
-                        sh "echo 'Hello from Demo 4'"
-                    }
-                }
-                stage('Demo 5') {
-                    steps {
-                        sh "echo 'Hello from Demo 5'"
-                    }
-                }
-            }
             steps {
-                sh "echo 'Hello from Sonarqube main stage'"
+                sh "echo 'Hello from Sonarqube'"
             }
             // Commented out steps
             // script {
