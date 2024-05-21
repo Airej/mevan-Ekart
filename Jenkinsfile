@@ -31,11 +31,11 @@ pipeline {
         
         stage('Sonarqube') {
             steps {
-               //  withSonarQubeEnv('sonar-server'){
-               //     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Shopping-Cart \
-               //     -Dsonar.java.binaries=. \
-               //     -Dsonar.projectKey=Shopping-Cart '''
-                }
+                // withSonarQubeEnv('sonar-server'){
+                //    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Shopping-Cart \
+                //    -Dsonar.java.binaries=. \
+                //    -Dsonar.projectKey=Shopping-Cart '''
+                // }
             }
         }
         
@@ -47,26 +47,26 @@ pipeline {
         
         stage('Docker Build & Push') {
             steps {
-                // script {
-                //     withDockerRegistry(credentialsId: '5a8a02d9-243d-4ec3-9bf1-be901cab1a65', toolName: 'docker') {
+                script {
+                    // withDockerRegistry(credentialsId: '5a8a02d9-243d-4ec3-9bf1-be901cab1a65', toolName: 'docker') {
                         
-                //         sh "docker build -t shopping-cart -f docker/Dockerfile ."
-                //         sh "docker tag  shopping-cart airej/shopping-cart:latest"
-                //         sh "docker push airej/shopping-cart:latest"
-                //     }
-                // }
+                    //     sh "docker build -t shopping-cart -f docker/Dockerfile ."
+                    //     sh "docker tag  shopping-cart airej/shopping-cart:latest"
+                    //     sh "docker push airej/shopping-cart:latest"
+                    // }
+                }
             }
         }
 
-        // stage('Deploy') {
-        //     steps {
-        //         // script {
-        //         //     withDockerRegistry(credentialsId: '5a8a02d9-243d-4ec3-9bf1-be901cab1a65', toolName: 'docker') {
+        stage('Deploy') {
+            steps {
+                script {
+                    // withDockerRegistry(credentialsId: '5a8a02d9-243d-4ec3-9bf1-be901cab1a65', toolName: 'docker') {
                         
-        //         //         sh "docker run -d --name shop-shop -p 8070:8070 airej/shopping-cart:latest"
-        //         //     }
-        //         // }
-        //     }
-        // }
+                    //     sh "docker run -d --name shop-shop -p 8070:8070 airej/shopping-cart:latest"
+                    // }
+                }
+            }
+        }
     }
 }
