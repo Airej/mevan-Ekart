@@ -105,6 +105,33 @@ pipeline {
         }
         
         stage('Sonarqube') {
+            parallel {
+                stage('Parallel Stage 1') {
+                    steps {
+                        sh "echo 'Hello from Parallel Stage 1'"
+                    }
+                }
+                stage('Parallel Stage 2') {
+                    steps {
+                        sh "echo 'Hello from Parallel Stage 2'"
+                    }
+                }
+                stage('Parallel Stage 3') {
+                    steps {
+                        sh "echo 'Hello from Parallel Stage 3'"
+                    }
+                }
+                stage('Parallel Stage 4') {
+                    steps {
+                        sh "echo 'Hello from Parallel Stage 4'"
+                    }
+                }
+                stage('Parallel Stage 5') {
+                    steps {
+                        sh "echo 'Hello from Parallel Stage 5'"
+                    }
+                }
+            }
             steps {
                 sh "echo 'Hello from Sonarqube'"
             }
@@ -152,3 +179,4 @@ pipeline {
         }
     }
 }
+
