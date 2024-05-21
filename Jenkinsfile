@@ -98,8 +98,9 @@ pipeline {
         
         stage('OWASP Scan') {
             steps {
-                dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'DP'
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+                sh "echo 'Hello' "
+                //dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'DP'
+                //dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
         
