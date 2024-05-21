@@ -132,9 +132,7 @@ pipeline {
                     }
                 }
             }
-            steps {
-                sh "echo 'Hello from Sonarqube'"
-            }
+
             // Commented out steps
             // script {
             //     // withSonarQubeEnv('sonar-server') {
