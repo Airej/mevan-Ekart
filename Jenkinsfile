@@ -105,18 +105,45 @@ pipeline {
         }
         
         stage('Sonarqube') {
-            steps {
-                sh "echo 'Hello' "
-                // Commented out steps
-                // script {
-                //     // withSonarQubeEnv('sonar-server') {
-                //     //     sh ''' $SCANNER_HOME/bin/sonar-scanner \
-                //     //         -Dsonar.projectName=Shopping-Cart \
-                //     //         -Dsonar.java.binaries=. \
-                //     //         -Dsonar.projectKey=Shopping-Cart '''
-                //     // }
-                // }
+            parallel {
+                stage('Demo 1') {
+                    steps {
+                        sh "echo 'Hello from Demo 1'"
+                    }
+                }
+                stage('Demo 2') {
+                    steps {
+                        sh "echo 'Hello from Demo 2'"
+                    }
+                }
+                stage('Demo 3') {
+                    steps {
+                        sh "echo 'Hello from Demo 3'"
+                    }
+                }
+                stage('Demo 4') {
+                    steps {
+                        sh "echo 'Hello from Demo 4'"
+                    }
+                }
+                stage('Demo 5') {
+                    steps {
+                        sh "echo 'Hello from Demo 5'"
+                    }
+                }
             }
+            steps {
+                sh "echo 'Hello from Sonarqube main stage'"
+            }
+            // Commented out steps
+            // script {
+            //     // withSonarQubeEnv('sonar-server') {
+            //     //     sh ''' $SCANNER_HOME/bin/sonar-scanner \
+            //     //         -Dsonar.projectName=Shopping-Cart \
+            //     //         -Dsonar.java.binaries=. \
+            //     //         -Dsonar.projectKey=Shopping-Cart '''
+            //     // }
+            // }
         }
         
         stage('Build') {
@@ -152,4 +179,3 @@ pipeline {
         }
     }
 }
-
