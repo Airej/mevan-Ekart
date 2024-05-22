@@ -17,7 +17,7 @@ pipeline {
             }
         }
         
-        stage('Changing App Setting files for PRE-PROD env') {
+        stage('Changing App Setting files for PROD env') {
             steps {
                 sh "echo 'Hello' "
                 //sh "mvn clean compile -DskipTests=true"
