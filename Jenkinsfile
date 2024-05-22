@@ -10,19 +10,28 @@ pipeline {
     }
 
     stages {
-        stage('Git Checkout') {
+        stage('Changing App Setting files for PRE-PROD env') {
             steps {
-                git branch: 'main', credentialsId: '073e6c59-a26b-42e1-ae69-7f8060073a97', url: 'https://github.com/Airej/mevan-Ekart.git'
+                sh "echo 'Hello' "
+                //git branch: 'main', credentialsId: '073e6c59-a26b-42e1-ae69-7f8060073a97', url: 'https://github.com/Airej/mevan-Ekart.git'
             }
         }
         
-        stage('Compile') {
+        stage('Changing App Setting files for PRE-PROD env') {
             steps {
-                sh "mvn clean compile -DskipTests=true"
+                sh "echo 'Hello' "
+                //sh "mvn clean compile -DskipTests=true"
             }
         }
         
-        stage('OWASP Scan') {
+        stage('Cleaning and restoring solutions') {
+            steps {
+                sh "echo 'Hello' "
+                //dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'DP'
+                //dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
+        stage('Building solutions') {
             steps {
                 sh "echo 'Hello' "
                 //dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'DP'
@@ -30,29 +39,54 @@ pipeline {
             }
         }
         
-        stage('Sonarqube') {
+        stage('Deployment on K8s Cluster') {
             parallel {
-                stage('Parallel Stage 1') {
+                stage('Building.tagging.pushing and deploying Aggregation') {
                     steps {
                         sh "echo 'Hello from Parallel Stage 1'"
                     }
                 }
-                stage('Parallel Stage 2') {
+                stage('Building.tagging.pushing and deploying Documentation') {
                     steps {
                         sh "echo 'Hello from Parallel Stage 2'"
                     }
                 }
-                stage('Parallel Stage 3') {
+                stage('Building.tagging.pushing and deploying Finance') {
                     steps {
                         sh "echo 'Hello from Parallel Stage 3'"
                     }
                 }
-                stage('Parallel Stage 4') {
+                stage('Building.tagging.pushing and deploying API gateways') {
                     steps {
                         sh "echo 'Hello from Parallel Stage 4'"
                     }
                 }
-                stage('Parallel Stage 5') {
+                stage('Building.tagging.pushing and deploying Identification') {
+                    steps {
+                        sh "echo 'Hello from Parallel Stage 5'"
+                    }
+                }
+                stage('Building.tagging.pushing and deploying Operations') {
+                    steps {
+                        sh "echo 'Hello from Parallel Stage 5'"
+                    }
+                }
+                stage('Building.tagging.pushing and deploying Regix') {
+                    steps {
+                        sh "echo 'Hello from Parallel Stage 5'"
+                    }
+                }
+                stage('Building.tagging.pushing and deploying Apigee lint') {
+                    steps {
+                        sh "echo 'Hello from Parallel Stage 5'"
+                    }
+                }
+                stage('Building.tagging.pushing and deploying Openshift') {
+                    steps {
+                        sh "echo 'Hello from Parallel Stage 5'"
+                    }
+                }
+                stage('Building.tagging.pushing and deploying Email') {
                     steps {
                         sh "echo 'Hello from Parallel Stage 5'"
                     }
@@ -70,13 +104,14 @@ pipeline {
             // }
         }
         
-        stage('Build') {
+        stage('Publishing solutions on web') {
             steps {
-                sh "mvn clean package -DskipTests=true"
+                sh "echo 'Hello' "
+                //sh "mvn clean package -DskipTests=true"
             }
         }
         
-        stage('Docker Build & Push') {
+        stage('Balancing load on web') {
             steps {
                 sh "echo 'Hello' "
                 // Commented out steps
@@ -90,7 +125,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Deployed') {
             steps {
                 sh "echo 'Hello' "
                 // Commented out steps
