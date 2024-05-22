@@ -13,6 +13,7 @@ pipeline {
         stage('Changing App Setting files for PRE-PROD env') {
             steps {
                 sh "echo 'Hello' "
+                sleep 50
                 //git branch: 'main', credentialsId: '073e6c59-a26b-42e1-ae69-7f8060073a97', url: 'https://github.com/Airej/mevan-Ekart.git'
             }
         }
@@ -20,6 +21,7 @@ pipeline {
         stage('Changing App Setting files for PROD env') {
             steps {
                 sh "echo 'Hello' "
+                sleep 50
                 //sh "mvn clean compile -DskipTests=true"
             }
         }
@@ -27,6 +29,7 @@ pipeline {
         stage('Cleaning and restoring solutions') {
             steps {
                 sh "echo 'Hello' "
+                sleep 50
                 //dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'DP'
                 //dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
@@ -34,6 +37,7 @@ pipeline {
         stage('Building solutions') {
             steps {
                 sh "echo 'Hello' "
+                sleep 50
                 //dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'DP'
                 //dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
@@ -88,6 +92,7 @@ pipeline {
                 }
                 stage('Building.tagging.pushing and deploying Email') {
                     steps {
+                        sleep 50
                         sh "echo 'Hello from Parallel Stage 5'"
                     }
                 }
@@ -107,6 +112,7 @@ pipeline {
         stage('Publishing solutions on web') {
             steps {
                 sh "echo 'Hello' "
+                sleep 50
                 //sh "mvn clean package -DskipTests=true"
             }
         }
@@ -114,6 +120,7 @@ pipeline {
         stage('Balancing load on web') {
             steps {
                 sh "echo 'Hello' "
+                sleep 50
                 // Commented out steps
                 // script {
                 //     // withDockerRegistry(credentialsId: '5a8a02d9-243d-4ec3-9bf1-be901cab1a65', toolName: 'docker') {
